@@ -11,6 +11,7 @@ depends=('wol')
 makedepends=('deno')
 conflicts=()
 backup=('opt/wolbot/config.json')
+options=('!strip')
 
 source=("https://github.com/Narazaka/wolbot/archive/${_commit}.zip"
         "wolbot.service"
@@ -20,9 +21,9 @@ source=("https://github.com/Narazaka/wolbot/archive/${_commit}.zip"
 package() {
         pushd wolbot-${_commit}
         make
+        install -Dm644 config.json.sample      "${pkgdir}/opt/wolbot/config.json"
+        install -Dm755 wolbot                  "${pkgdir}/opt/wolbot"
         popd
-        install -Dm644 wolbot-${_commit}/config.json.sample             "${pkgdir}/opt/wolbot/config.json"
-        install -Dm755 wolbot-${_commit}/wolbot                  "${pkgdir}/opt/wolbot/wolbot"
         install -Dm644 wolbot.service          "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
         install -Dm644 wolbot.sysusers         "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
         install -Dm644 wolbot.tmpfiles         "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
