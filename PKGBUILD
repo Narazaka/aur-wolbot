@@ -14,7 +14,8 @@ backup=('opt/wolbot/config.json')
 
 source=("https://github.com/Narazaka/wolbot/archive/${_commit}.zip"
         "wolbot.service"
-        "wolbot.sysusers")
+        "wolbot.sysusers"
+        "wolbot.tmpfiles")
 
 package() {
         pushd wolbot-${_commit}
@@ -24,8 +25,10 @@ package() {
         install -Dm755 wolbot-${_commit}/wolbot                  "${pkgdir}/opt/wolbot/wolbot"
         install -Dm644 wolbot.service          "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
         install -Dm644 wolbot.sysusers         "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+        install -Dm644 wolbot.tmpfiles         "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
 sha256sums=('282662ed208dbf7c32583444a1f6187f3567c0934bcbe174e46fd1fa62a9fb62'
             'e4701993da141d78197a344da1433844d533cfdc23e15d11988845db6171043b'
-            '3c13c9b9c7a629fa1cb14edd4807b7190e116d0733982b615882f1c77a0feea6')
+            '30d1fab08104c5bbfeb6fca89cd21873966a7f6ced3107008e0e630c6d591527'
+            'ae4f2107f328e08ed0043419cf1a1e19d1ad892149c5aa3f9f8c07861f117a28')
