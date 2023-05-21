@@ -4,9 +4,11 @@ After=local-fs.target network.target multi-user.target
 
 [Service]
 Type=exec
+WorkingDirectory=/opt/wolbot
 ExecStart=/opt/wolbot/wolbot
 User=wolbot
 Group=wolbot
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
