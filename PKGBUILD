@@ -1,5 +1,5 @@
 pkgname=wolbot
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="Wake on LAN discord bot"
@@ -25,7 +25,7 @@ package() {
         install -Dm644 wolbot.tmpfiles         "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
-sha256sums=('04d9dcf0ed79fd5ae5c2d859a55947eda113953a125b4353f17770d201ee24e0'
+sha256sums=('8bbbf2cd41470d24de67a55205dff202bfc615a3c8f482d4d554854f02d6c05d'
             '65781eb9d9f184f9c516055ea58b43713760dfe1c17fbc92c68a5dd5ec06ab41'
             '7f1fe99c812b21b001f86e14751a36b139aff8d7050a1959f3026a5cd679b241'
             '30d1fab08104c5bbfeb6fca89cd21873966a7f6ced3107008e0e630c6d591527'
